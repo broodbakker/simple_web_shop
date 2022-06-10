@@ -3,12 +3,13 @@ import React, { useContext } from 'react'
 import { AuthContext } from "../stores/authContext"
 
 const Home = () => {
-  const { user, login } = useContext(AuthContext)
+  const { user, login, logout } = useContext(AuthContext)
   return (
     <div>
-      test
+      test1
 
-      <button onClick={login}>button</button>
+      <button onClick={login}>login</button>
+      <button onClick={logout}>logout</button>
     </div>
   )
 }
