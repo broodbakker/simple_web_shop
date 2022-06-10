@@ -16,7 +16,7 @@ interface IContext {
 
 export const AuthContextProvider = ({ children }: IContext) => {
   const [user, setUser] = useState<null | netlifyIdentity.User>(null)
-
+  const [authReady, setAuthReady] = useState(false)
   useEffect(() => {
     netlifyIdentity.on("login", (user) => {
       setUser(user)
@@ -29,7 +29,15 @@ export const AuthContextProvider = ({ children }: IContext) => {
       console.log("logout event")
     })
 
+    netlifyIdentity.on("init", () => {
+      setUser(user)
+      setAuthReady(true)
+      console.log("init event")
+
+    })
+
     netlifyIdentity.init()
+
 
 
     return () => {
@@ -47,7 +55,7 @@ export const AuthContextProvider = ({ children }: IContext) => {
     netlifyIdentity.logout()
   }
 
-  const context = { user, login, logout, authReady: false }
+  const context = { user, login, logout, authReady }
 
   const context1 = { user: null, login, logout, authReady: false }
 
