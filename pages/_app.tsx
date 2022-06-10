@@ -5,6 +5,8 @@ import Head from "next/head";
 import { theme } from '../styles/global'
 // Modules
 import { AppProps } from 'next/app';
+//context
+import { AuthContextProvider } from '../stores/authContext';
 
 // import * as gtag from "../lib/gtag ";
 const isProduction = process.env.NODE_ENV === "production";
@@ -13,7 +15,10 @@ const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
 
   return (
     <ChakraProvider theme={theme}>
-      <Component {...pageProps} />
+      <AuthContextProvider>
+        <Component {...pageProps} />
+      </AuthContextProvider>
+
     </ChakraProvider>
   );
 };
