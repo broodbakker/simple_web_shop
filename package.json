@@ -13,6 +13,7 @@
     "@chakra-ui/react": "^2.2.1",
     "@emotion/react": "^11",
     "@emotion/styled": "^11",
+    "@netlify/functions": "^1.0.0",
     "framer-motion": "^6",
     "netlify-identity-widget": "^1.9.2",
     "next": "12.1.6",
