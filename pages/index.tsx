@@ -6,7 +6,7 @@ const Home = () => {
   const { user, login, logout } = useContext(AuthContext)
   return (
     <div>
-      test1
+      test2
 
       <button onClick={login}>login</button>
       <button onClick={logout}>logout</button>
