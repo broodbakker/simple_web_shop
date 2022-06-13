@@ -3,7 +3,18 @@ import React, { useContext, useEffect } from 'react'
 import { AuthContext } from "../stores/authContext"
 import { useState } from 'react';
 
-const Home = () => {
+import netlifyIdentity from "netlify-identity-widget"
+
+const testFetch = (user: null | netlifyIdentity.User) => fetch("/.netlify/functions/user", {
+  headers: {
+    Authorization: `Bearer ${user?.token?.access_token}`
+  }
+})
+  .then(res => {
+    return res.json()
+  })
+
+const useAuth = () => {
   const { user, login, logout, authReady } = useContext(AuthContext)
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
@@ -11,18 +22,14 @@ const Home = () => {
 
   useEffect(() => {
     if (authReady) {
-      fetch("/.netlify/functions/user", authReady && {
-        headers: {
-          Authorization: `Bearer ${user?.token?.access_token}`
+
+      testFetch(user).then(res => {
+        if (!res.ok) {
+          login()
+          throw Error('You must be logged in to view this content')
         }
+        return res.json()
       })
-        .then(res => {
-          if (!res.ok) {
-            login()
-            throw Error('You must be logged in to view this content')
-          }
-          return res.json()
-        })
         .then(data => {
           setError(null)
           setData(data)
@@ -33,25 +40,33 @@ const Home = () => {
         })
     }
 
-
   }, [user, authReady])
 
-  console.log(user, "user")
+  return {
+    authReady,
+    user,
+    login,
+    logout,
+  };
+}
+const Home = () => {
+  const {
+    authReady,
+    user,
+    login,
+    logout,
+  } = useAuth();
+
   return (
     <div>
-      test2
 
       {authReady &&
         <>
           {!user && <button onClick={login}>login</button>}
           {user && <button onClick={logout}>logout</button>}
+          <h2> {`Welcome ${user ? user.email : "guest"}`}</h2>
         </>
       }
-
-
-
-
-
     </div>
   )
 }

@@ -1,7 +1,6 @@
 import { Handler } from "@netlify/functions";
 
 const handler: Handler = async (event, context) => {
-  const data = { name: "mario", age: 35, job: "plumber" }
 
   if (context?.clientContext?.user) {
     return {
@@ -16,6 +15,10 @@ const handler: Handler = async (event, context) => {
   };
 
 
+  return {
+    statusCode: 200,
+    body: JSON.stringify({ message: "Hello World" }),
+  };
 };
 
 export { handler };
