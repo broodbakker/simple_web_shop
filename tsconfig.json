@@ -31,7 +31,8 @@
     "plugins/netlify-plugin-store-posts-for-search/functions/index.js",
     "pages/index.tsx",
     "pages/index.tsx",
-    "component/richText.js"
+    "component/richText.js",
+    "pages/admin.js"
   ],
   "exclude": [
     "node_modules"
