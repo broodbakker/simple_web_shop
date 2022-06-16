@@ -11,6 +11,8 @@ import { loadStripe } from '@stripe/stripe-js';
 //api
 import { fetchPayment, fetchProducts } from "../util/api"
 import StripeError from "stripe"
+//product data
+
 
 
 const FetchUser = (user: null | netlifyIdentity.User) => fetch("/.netlify/functions/user", {

@@ -1,0 +1,11 @@
+{
+  "date": "2022-06-16T08:34:07.464Z",
+  "title": "test1",
+  "sku": "test1",
+  "description": "test ksdopfksadop fkopsdfk a",
+  "price": "3.99",
+  "category": "paarden",
+  "image": [
+    "https://res.cloudinary.com/dta9vptzh/image/upload/v1546510363/sample.jpg"
+  ]
+}
