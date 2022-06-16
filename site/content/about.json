@@ -1,12 +1,19 @@
 {
-  "title": "df",
-  "intro": "sdf",
+  "title": "sdfsdfdf",
+  "intro": "sdffsdfds",
   "team": [
     {
       "name": "dsf",
       "position": "sdf",
       "photo": [
         "https://res.cloudinary.com/dta9vptzh/image/upload/v1647941131/lauren/brandweer_declareren.png"
+      ]
+    },
+    {
+      "name": "sdf",
+      "position": "dsf",
+      "photo": [
+        "https://res.cloudinary.com/dta9vptzh/image/upload/v1654090840/image_loading_folder/pp7z3j3n9u2e5sn8rxxj.jpg"
       ]
     }
   ]
