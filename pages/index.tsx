@@ -12,7 +12,9 @@ import { loadStripe } from '@stripe/stripe-js';
 import { fetchPayment, fetchProducts } from "../util/api"
 import StripeError from "stripe"
 //product data
+import test from "../public/content/content.json"
 
+console.log("test", test)
 
 
 const FetchUser = (user: null | netlifyIdentity.User) => fetch("/.netlify/functions/user", {
@@ -28,7 +30,6 @@ const useAuth = () => {
   const { user, login, logout, authReady } = useContext(AuthContext)
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
-
 
   useEffect(() => {
     if (authReady) {

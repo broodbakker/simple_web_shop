@@ -17,13 +17,13 @@ collections:
     extension: json
     format: json
     files:
-      - label: "About Page"
-        name: "about"
+      - label: "Products"
+        name: "products"
         file: "/content/content.json"
         fields:
           - {label: Title, name: title, widget: string}
-          - label: Team
-            name: team
+          - label: Products
+            name: products
             widget: list
             fields:
               - {name: title, label: Title, widget: "string"}
