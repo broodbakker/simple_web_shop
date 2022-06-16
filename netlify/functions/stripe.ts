@@ -50,8 +50,8 @@ const handler: Handler = async (event, context) => {
     shipping_address_collection: {
       allowed_countries: ['NL', 'CA'],
     },
-    success_url: `http://localhost:8888/success.html`,
-    cancel_url: "http://localhost:8888/",
+    success_url: `${process.env.URL}/success.html`,
+    cancel_url: process.env.URL,
     line_items: line_items(products)
   });
 

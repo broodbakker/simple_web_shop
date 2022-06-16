@@ -8,7 +8,7 @@ import netlifyIdentity from "netlify-identity-widget"
 import ProductAddToCart from "../components/products"
 import { loadStripe } from '@stripe/stripe-js';
 //api
-import { fetchPayment, fetchProducts } from "../util/api"
+import { fetchPayment } from "../util/api"
 import StripeError from "stripe"
 import { useShoppingCart, DebugCart } from "use-shopping-cart"
 //product data
@@ -56,19 +56,6 @@ const useAuth = () => {
   };
 }
 
-const useLoadProducts = () => {
-  const [products, setProducts] = useState()
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    fetchProducts().then((products) => {
-      setProducts(products)
-    })
-      .catch((err) => setError(err.message));
-  }, [])
-
-  return { products, error }
-}
 
 interface IPayment {
   name: string,
@@ -91,9 +78,7 @@ const usePayment = () => {
 
     setPaymentError(error)
   }
-
   return { handlePayment, paymentError }
-
 }
 
 const productData = [
@@ -133,6 +118,9 @@ const productData = [
   }
 ]
 
+//function
+const ConvertProductDataForCart = () => { }
+
 const Home = () => {
   const {
     authReady,
@@ -144,7 +132,6 @@ const Home = () => {
   const { handlePayment, paymentError } = usePayment()
 
   const { clearCart, addItem, loadCart } = useShoppingCart()
-
 
 
   return (

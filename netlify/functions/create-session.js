@@ -2,7 +2,13 @@ const stripe = require('stripe')(process.env.STRIPE_SECRET)
 const validateCartItems =
   require('use-shopping-cart/utilities').validateCartItems
 
-const inventory = require('./data/products.json')
+const isLocalhost = typeof window !== 'undefined' && window.location.host === 'localhost:8888'
+
+const url = isLocalhost ? process.env.URL_DEV : process.env.URL_LIVE
+
+
+
+const inventory = require(`${url}/public/content/content.json`)
 
 exports.handler = async (event) => {
   let product
