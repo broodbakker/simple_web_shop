@@ -26,10 +26,10 @@ collections:
             name: products
             widget: list
             fields:
-              - {name: title, label: Title, widget: "string"}
-              - {name: sku, label: Sku, widget: "string"}
+              - {name: name, label: Name, widget: "string"}
+              - {name: id, label: Id, widget: "string"}
               - {name: description, label: Description, widget:"string"}
-              - {label: "Price", name: "price", widget: "string", pattern: ['(?<=^| )\d+(\.\d+)?(?=$| )', "must be a number"]}
+              - {label: "Price", name: "price", widget: "number"}
               - {label: "Publish Date", name: "date", widget: "datetime"}
               - label: "Category"
                 name: "category"

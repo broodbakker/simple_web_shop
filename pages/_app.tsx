@@ -7,6 +7,8 @@ import { theme } from '../styles/global'
 import { AppProps } from 'next/app';
 //context
 import { AuthContextProvider } from '../stores/authContext';
+import { CartProvider } from 'use-shopping-cart'
+
 
 // import * as gtag from "../lib/gtag ";
 const isProduction = process.env.NODE_ENV === "production";
@@ -16,7 +18,18 @@ const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
   return (
     <ChakraProvider theme={theme}>
       <AuthContextProvider>
-        <Component {...pageProps} />
+        <CartProvider
+          mode="payment"
+          cartMode="client-only"
+          stripe={process.env.STRIPE_SECRET as string}
+          successUrl="stripe.com"
+          cancelUrl="twitter.com/dayhaysoos"
+          currency="USD"
+          allowedCountries={['US', 'GB', 'CA']}
+          billingAddressCollection={true}
+        >
+          <Component {...pageProps} />
+        </CartProvider>
       </AuthContextProvider>
 
     </ChakraProvider>

@@ -6,25 +6,21 @@ import { useState } from 'react';
 import netlifyIdentity from "netlify-identity-widget"
 //componenents
 import ProductAddToCart from "../components/products"
-
 import { loadStripe } from '@stripe/stripe-js';
 //api
 import { fetchPayment, fetchProducts } from "../util/api"
 import StripeError from "stripe"
+import { useShoppingCart, DebugCart } from "use-shopping-cart"
 //product data
 import test from "../public/content/content.json"
-
-console.log("test", test)
-
 
 const FetchUser = (user: null | netlifyIdentity.User) => fetch("/.netlify/functions/user", {
   headers: {
     Authorization: `Bearer ${user?.token?.access_token}`
   }
+}).then(res => {
+  return res
 })
-  .then(res => {
-    return res
-  })
 
 const useAuth = () => {
   const { user, login, logout, authReady } = useContext(AuthContext)
@@ -100,6 +96,43 @@ const usePayment = () => {
 
 }
 
+const productData = [
+  {
+    name: 'Bananas',
+    id: 'some_unique_id_1',
+    price: 400,
+    image: 'https://www.fillmurray.com/300/300',
+    currency: 'USD',
+    product_data: {
+      metadata: {
+        type: 'fruit'
+      }
+    },
+    price_data: {
+      recurring: {
+        interval: 'week'
+      }
+    }
+  },
+  {
+    name: 'Tangerines',
+    id: 'some_unique_id_2',
+    price: 100,
+    image: 'https://www.fillmurray.com/300/300',
+    currency: 'USD',
+    product_data: {
+      metadata: {
+        type: 'fruit'
+      }
+    },
+    price_data: {
+      recurring: {
+        interval: 'week'
+      }
+    }
+  }
+]
+
 const Home = () => {
   const {
     authReady,
@@ -108,15 +141,18 @@ const Home = () => {
     logout,
   } = useAuth();
 
-  const { products, error } = useLoadProducts();
-
   const { handlePayment, paymentError } = usePayment()
+
+  const { clearCart, addItem, loadCart } = useShoppingCart()
+
+
 
   return (
     <div>
-      {/* {products && products.map((val, index: number) => <ProductAddToCart key={index} />)} */}
-
-      {error && <div>error</div>}
+      1
+      <DebugCart></DebugCart>
+      2
+      {test.products && test.products.map((val, index: number) => <ProductAddToCart key={index} />)}
 
       {authReady &&
         <>
@@ -127,6 +163,12 @@ const Home = () => {
       }
 
       <button onClick={handlePayment}> send payment</button>
+
+      <button onClick={() => clearCart()}>clear cart</button>
+
+      <button onClick={() => addItem(productData[0])}> add product 1</button>
+
+      <button onClick={() => addItem(productData[1])}> add product 2</button>
 
     </div>
   )
