@@ -19,7 +19,7 @@ collections:
     files:
       - label: "About Page"
         name: "about"
-        file: "site/content/about.json"
+        file: "/content/content.json"
         fields:
           - {label: Title, name: title, widget: string}
           - label: Team
