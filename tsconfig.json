@@ -32,7 +32,7 @@
     "pages/index.tsx",
     "pages/index.tsx",
     "component/richText.js",
-    "pages/admin.js"
+    "pages/admin.tsxx"
   ],
   "exclude": [
     "node_modules"
