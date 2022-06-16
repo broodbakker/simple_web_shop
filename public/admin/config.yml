@@ -14,7 +14,7 @@ publish_mode: editorial_workflow
 collections:
   - name: product
     label: Products
-    folder: "content/auteurs"
+    folder: "content/products"
     create: true
     extension: json
     format: json
