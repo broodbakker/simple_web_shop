@@ -1,6 +1,7 @@
 
 backend:
-  name: test-repo
+  name: 'git-gateway',
+  branch: 'master'
 media_library:
   name: cloudinary
   config:
@@ -15,10 +16,12 @@ collections:
     label: Products
     folder: "content/auteurs"
     create: true
+    extension: json
+    format: json
     fields:
       - {name: title, label: Title, widget: "string"}
       - {name: sku, label: Sku, widget: "string"}
-      - {name: description, label: Naam, widget:"string"}
+      - {name: description, label: Description, widget:"string"}
       - {label: "Price", name: "price", widget: "string", pattern: ['(?<=^| )\d+(\.\d+)?(?=$| )', "must be a number"]}
       - {label: "Publish Date", name: "date", widget: "datetime"}
       - label: "Category"
