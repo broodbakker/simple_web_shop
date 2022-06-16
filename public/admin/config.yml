@@ -14,10 +14,12 @@ publish_mode: editorial_workflow
 collections:
   - name: product
     label: Products
+    extension: json
+    format: json
     files:
       - label: "About Page"
         name: "about"
-        file: "site/content/about.yml"
+        file: "site/content/about.json"
         fields:
           - {label: Title, name: title, widget: string}
           - {label: Intro, name: intro, widget: markdown}
@@ -30,7 +32,7 @@ collections:
               - {label: Photo, name: photo, widget: image}
       - label: "Locations Page"
         name: "locations"
-        file: "site/content/locations.yml"
+        file: "site/content/locations.json"
         fields:
           - {label: Title, name: title, widget: string}
           - {label: Intro, name: intro, widget: markdown}
