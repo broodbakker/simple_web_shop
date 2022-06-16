@@ -1,0 +1,16 @@
+{
+  "team": [
+    {
+      "date": "2022-06-16T09:12:59.713Z",
+      "title": "tesat",
+      "sku": "tes",
+      "description": "fsd",
+      "price": "4.99",
+      "category": "stallen",
+      "image": [
+        "https://res.cloudinary.com/dta9vptzh/image/upload/v1546510363/sample.jpg"
+      ]
+    }
+  ],
+  "title": "products"
+}
