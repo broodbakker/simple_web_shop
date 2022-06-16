@@ -22,26 +22,23 @@ collections:
         file: "site/content/about.json"
         fields:
           - {label: Title, name: title, widget: string}
-          - {label: Intro, name: intro, widget: markdown}
           - label: Team
             name: team
             widget: list
             fields:
-              - {label: Name, name: name, widget: string}
-              - {label: Position, name: position, widget: string}
-              - {label: Photo, name: photo, widget: image}
-      - label: "Locations Page"
-        name: "locations"
-        file: "site/content/locations.json"
-        fields:
-          - {label: Title, name: title, widget: string}
-          - {label: Intro, name: intro, widget: markdown}
-          - label: Locations
-            name: locations
-            widget: list
-            fields:
-              - {label: Name, name: name, widget: string}
-              - {label: Address, name: address, widget: string}
+              - {name: title, label: Title, widget: "string"}
+              - {name: sku, label: Sku, widget: "string"}
+              - {name: description, label: Description, widget:"string"}
+              - {label: "Price", name: "price", widget: "string", pattern: ['(?<=^| )\d+(\.\d+)?(?=$| )', "must be a number"]}
+              - {label: "Publish Date", name: "date", widget: "datetime"}
+              - label: "Category"
+                name: "category"
+                widget: "select"
+                options: ["paarden","stallen","dekjes"]
+              - name: image
+                label: Image
+                widget: 'image'
+                valueField: "{{slug}}"
 
 
     # folder: "content/products"
@@ -49,18 +46,18 @@ collections:
     # extension: json
     # format: json
     # fields:
-    #   - {name: title, label: Title, widget: "string"}
-    #   - {name: sku, label: Sku, widget: "string"}
-    #   - {name: description, label: Description, widget:"string"}
-    #   - {label: "Price", name: "price", widget: "string", pattern: ['(?<=^| )\d+(\.\d+)?(?=$| )', "must be a number"]}
-    #   - {label: "Publish Date", name: "date", widget: "datetime"}
-    #   - label: "Category"
-    #     name: "category"
-    #     widget: "select"
-    #     options: ["paarden","stallen","dekjes"]
-    #   - name: image
-    #     label: Image
-    #     widget: 'image'
-    #     valueField: "{{slug}}"
+      # - {name: title, label: Title, widget: "string"}
+      # - {name: sku, label: Sku, widget: "string"}
+      # - {name: description, label: Description, widget:"string"}
+      # - {label: "Price", name: "price", widget: "string", pattern: ['(?<=^| )\d+(\.\d+)?(?=$| )', "must be a number"]}
+      # - {label: "Publish Date", name: "date", widget: "datetime"}
+      # - label: "Category"
+      #   name: "category"
+      #   widget: "select"
+      #   options: ["paarden","stallen","dekjes"]
+      # - name: image
+      #   label: Image
+      #   widget: 'image'
+      #   valueField: "{{slug}}"
 
 
