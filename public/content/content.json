@@ -1,27 +1,41 @@
 {
   "products": [
     {
-      "date": "2022-06-16T09:12:59.713Z",
-      "name": "tesat",
-      "id": "tesat",
-      "description": "fsd",
       "price": 499,
+      "name": "tesat",
+      "date": "2022-06-16T09:12:59.713Z",
       "currency": "EUR",
-      "category": "stallen",
+      "id": "tesat",
       "image": [
         "https://res.cloudinary.com/dta9vptzh/image/upload/v1546510363/sample.jpg"
-      ]
+      ],
+      "description": "fsd",
+      "category": "stallen",
+      "curreny": "EUR"
     },
     {
-      "date": "2022-06-16T09:13:39.067Z",
-      "name": "dsf",
-      "id": "dsf",
-      "description": "df",
       "price": 299,
+      "name": "dsf",
+      "date": "2022-06-16T09:13:39.067Z",
       "currency": "EUR",
-      "category": "paarden",
+      "id": "dsf",
       "image": [
         "https://res.cloudinary.com/dta9vptzh/image/upload/v1546510363/sample.jpg"
+      ],
+      "description": "df",
+      "category": "paarden",
+      "curreny": "EUR"
+    },
+    {
+      "date": "2022-06-17T15:23:55.666Z",
+      "name": "this is a big boot",
+      "id": "this-is-a-big-boot",
+      "description": "is use this big boot to go away",
+      "price": 1000,
+      "curreny": "EUR",
+      "category": "stallen",
+      "image": [
+        "https://res.cloudinary.com/dta9vptzh/image/upload/v1553072532/blog/bvkare1jkyfkjxy64ywj.jpg"
       ]
     }
   ],
