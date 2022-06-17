@@ -1,125 +1,46 @@
-import React, { useContext, useEffect } from 'react'
-//context
-import { AuthContext } from "../stores/authContext"
-import { useState } from 'react';
-
-import netlifyIdentity from "netlify-identity-widget"
-//componenents
-import ProductAddToCart from "../components/products"
-import { loadStripe } from '@stripe/stripe-js';
+import React from 'react'
 //api
-import { fetchPayment } from "../util/api"
-import StripeError from "stripe"
-import { useShoppingCart, DebugCart } from "use-shopping-cart"
-//product data
-import test from "../public/content/content.json"
-
-const FetchUser = (user: null | netlifyIdentity.User) => fetch("/.netlify/functions/user", {
-  headers: {
-    Authorization: `Bearer ${user?.token?.access_token}`
-  }
-}).then(res => {
-  return res
-})
-
-const useAuth = () => {
-  const { user, login, logout, authReady } = useContext(AuthContext)
-  const [data, setData] = useState(null);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    if (authReady) {
-      FetchUser(user).then(res => {
-        if (!res.ok) {
-          throw Error('You must be logged in to view this content')
-        }
-        return res.json()
-      })
-        .then(data => {
-          console.log(data)
-          setError(null)
-          setData(data)
-        })
-        .catch(err => {
-          console.log(err.message)
-          setError(err.message)
-          setData(null)
-        })
-    }
-  }, [user, authReady])
-
-  return {
-    authReady,
-    user,
-    login,
-    logout,
-  };
-}
+import { DebugCart } from "use-shopping-cart"
+//typescript
+import { IProduct, IProductCart } from "../typescript"
+//hooks
+import { useAuth } from "../util/hooks/useAuth"
+import { usePayment } from "../util/hooks/usePayment"
+//data
+import inventory from "../public/content/content.json"
+//template
+import HomePage from "../components/template/homePage"
 
 
-interface IPayment {
-  name: string,
-  quantity: number
-}
-
-const usePayment = () => {
-  const [data, setData] = useState([{ name: "DEMO001", quantity: 1 }, { name: "DEMO002", quantity: 2 }])
-
-  const [paymentError, setPaymentError] = useState<StripeError | null>(null);
-
-  const handlePayment = async () => {
-    const response = await fetchPayment(data)
-
-    const stripe: any = await loadStripe(response.publishableKey);
-
-    const { error } = await stripe.redirectToCheckout({
-      sessionId: response.sessionId,
-    });
-
-    setPaymentError(error)
-  }
-  return { handlePayment, paymentError }
-}
-
-const productData = [
-  {
-    name: 'Bananas',
-    id: 'some_unique_id_1',
-    price: 400,
-    image: 'https://www.fillmurray.com/300/300',
-    currency: 'USD',
-    product_data: {
-      metadata: {
-        type: 'fruit'
-      }
+const productDataTest =
+  [
+    {
+      "name": "Sunglasses",
+      "id": "price_1GwzfVCNNrtKkPVCh2MVxRkO",
+      "price": 1500,
+      "image": "https://files.stripe.com/links/fl_test_FR8EZTS7UDXE0uljMfT7hwmH",
+      "currency": "EUR",
+      "description": "A pair of average black sunglasses."
     },
-    price_data: {
-      recurring: {
-        interval: 'week'
-      }
+    {
+      "name": "3 Stripe Streak Scoop Neck Flowy T-Shirt",
+      "id": "price_OkRxVM2hCVPkKtrNNCVfzwG1",
+      "price": 3000,
+      "image": "https://static.musictoday.com/store/bands/4806/product_600/5QCTBL052.jpg",
+      "description": "A black scoop neck flowy t-shirt with 3 bright yellow strips behind the words Black Lives Matter.",
+      "currency": "EUR"
     }
-  },
-  {
-    name: 'Tangerines',
-    id: 'some_unique_id_2',
-    price: 100,
-    image: 'https://www.fillmurray.com/300/300',
-    currency: 'USD',
-    product_data: {
-      metadata: {
-        type: 'fruit'
-      }
-    },
-    price_data: {
-      recurring: {
-        interval: 'week'
-      }
-    }
-  }
-]
+  ]
 
 //function
-const ConvertProductDataForCart = () => { }
+const ConvertProductDataForCart = ({ name, id, price, image, currency, description }: IProduct): IProductCart => ({
+  name,
+  id,
+  price,
+  description,
+  currency,
+  image: image[0],
+})
 
 const Home = () => {
   const {
@@ -129,17 +50,16 @@ const Home = () => {
     logout,
   } = useAuth();
 
-  const { handlePayment, paymentError } = usePayment()
+  const { clearCart, addItem, loadCart, status, handleCheckout, cartDetails } = usePayment()
 
-  const { clearCart, addItem, loadCart } = useShoppingCart()
-
+  const products = inventory.products.map(ConvertProductDataForCart)
 
   return (
     <div>
-      1
+      {/* 1
       <DebugCart></DebugCart>
       2
-      {test.products && test.products.map((val, index: number) => <ProductAddToCart key={index} />)}
+
 
       {authReady &&
         <>
@@ -149,13 +69,17 @@ const Home = () => {
         </>
       }
 
-      <button onClick={handlePayment}> send payment</button>
+      <div>{status}</div>
+
+      <button onClick={handleCheckout}>hanlde payment </button>
 
       <button onClick={() => clearCart()}>clear cart</button>
 
-      <button onClick={() => addItem(productData[0])}> add product 1</button>
+      <button onClick={() => addItem((products[0]))}> add product 1</button>
 
-      <button onClick={() => addItem(productData[1])}> add product 2</button>
+      <button onClick={() => addItem((products[1]))}> add product 2</button>addItem */}
+
+      <HomePage products={products}/>
 
     </div>
   )

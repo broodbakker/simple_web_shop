@@ -2,10 +2,11 @@
   "products": [
     {
       "date": "2022-06-16T09:12:59.713Z",
-      "title": "tesat",
-      "sku": "tesat",
+      "name": "tesat",
+      "id": "tesat",
       "description": "fsd",
-      "price": "4.99",
+      "price": 499,
+      "currency": "EUR",
       "category": "stallen",
       "image": [
         "https://res.cloudinary.com/dta9vptzh/image/upload/v1546510363/sample.jpg"
@@ -13,10 +14,11 @@
     },
     {
       "date": "2022-06-16T09:13:39.067Z",
-      "title": "dsf",
-      "sku": "dsf",
+      "name": "dsf",
+      "id": "dsf",
       "description": "df",
-      "price": "2.99",
+      "price": 299,
+      "currency": "EUR",
       "category": "paarden",
       "image": [
         "https://res.cloudinary.com/dta9vptzh/image/upload/v1546510363/sample.jpg"

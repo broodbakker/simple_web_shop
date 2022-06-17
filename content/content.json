@@ -1,27 +1,29 @@
 {
-  "title": "product dataa",
   "products": [
     {
-      "date": "2022-06-16T12:23:39.460Z",
-      "name": "test",
-      "id": "test",
-      "description": "sdfasdfadsofkapo",
-      "price": 300,
-      "category": "paarden",
+      "date": "2022-06-16T09:12:59.713Z",
+      "name": "tesat",
+      "id": "tesat",
+      "description": "fsd",
+      "price": 499,
+      "currency": "EUR",
+      "category": "stallen",
       "image": [
-        "https://res.cloudinary.com/dta9vptzh/image/upload/v1647941131/lauren/brandweer_declareren.png"
+        "https://res.cloudinary.com/dta9vptzh/image/upload/v1546510363/sample.jpg"
       ]
     },
     {
-      "date": "2022-06-16T12:24:14.920Z",
-      "name": "sdfadsf",
-      "id": "sdfadsf",
-      "description": "dsfas",
-      "price": 4000,
-      "category": "stallen",
+      "date": "2022-06-16T09:13:39.067Z",
+      "name": "dsf",
+      "id": "dsf",
+      "description": "df",
+      "price": 299,
+      "currency": "EUR",
+      "category": "paarden",
       "image": [
-        "https://res.cloudinary.com/dta9vptzh/image/upload/v1546870711/pizza_company2/qpwqrff84vs3onsirhj7.jpg"
+        "https://res.cloudinary.com/dta9vptzh/image/upload/v1546510363/sample.jpg"
       ]
     }
-  ]
+  ],
+  "title": "products"
 }

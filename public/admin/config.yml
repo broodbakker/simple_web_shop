@@ -19,7 +19,7 @@ collections:
     files:
       - label: "Products"
         name: "products"
-        file: "/content/content.json"
+        file: "/public/content/content.json"
         fields:
           - {label: Title, name: title, widget: string}
           - label: Products
@@ -31,6 +31,10 @@ collections:
               - {name: description, label: Description, widget:"string"}
               - {label: "Price", name: "price", widget: "number"}
               - {label: "Publish Date", name: "date", widget: "datetime"}
+              - label: "Currency"
+                name: "curreny"
+                widget: "select"
+                options: ["EUR","USD"]
               - label: "Category"
                 name: "category"
                 widget: "select"

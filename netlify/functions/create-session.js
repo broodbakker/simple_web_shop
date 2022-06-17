@@ -1,16 +1,34 @@
-const stripe = require('stripe')(process.env.STRIPE_SECRET)
+
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
+const axios = require("axios")
 const validateCartItems =
   require('use-shopping-cart/utilities').validateCartItems
 
-const isLocalhost = typeof window !== 'undefined' && window.location.host === 'localhost:8888'
+const fetchProducts = (url) => axios(url, {
+  method: 'GET',
+}).then((response) => {
+  return response.data.products
+})
 
-const url = isLocalhost ? process.env.URL_DEV : process.env.URL_LIVE
+//function
+const ConvertProductDataForCart = ({ name, id, price, image, currency, description }) => ({
+  name,
+  id,
+  price,
+  description,
+  currency,
+  image: image[0],
+})
 
-
-
-const inventory = require(`${url}/public/content/content.json`)
 
 exports.handler = async (event) => {
+
+  const url = `${process.env.URL}/content/content.json`
+
+  const data = await fetchProducts(url)
+
+  const inventory = data.map(ConvertProductDataForCart)
+
   let product
   try {
     product = JSON.parse(event.body)
@@ -26,8 +44,13 @@ exports.handler = async (event) => {
 
   let line_items
   try {
+    console.log("line_items", line_items)
+
     line_items = validateCartItems(inventory, product)
+
+    console.log("line_items", line_items)
   } catch (error) {
+
     return {
       statusCode: 422,
       body: JSON.stringify({
@@ -40,10 +63,10 @@ exports.handler = async (event) => {
   let session
   try {
     session = await stripe.checkout.sessions.create({
-      payment_method_types: ['card'],
+      payment_method_types: ['card', "ideal"],
       billing_address_collection: 'auto',
       shipping_address_collection: {
-        allowed_countries: ['US', 'CA']
+        allowed_countries: ['NL', 'CA']
       },
       mode: 'payment',
       success_url: `${process.env.URL}/success.html`,
@@ -51,6 +74,7 @@ exports.handler = async (event) => {
       line_items
     })
   } catch (error) {
+    console.log("line_itemserror", error);
     return {
       statusCode: 500,
       body: JSON.stringify({
@@ -62,6 +86,9 @@ exports.handler = async (event) => {
 
   return {
     statusCode: 200,
-    body: JSON.stringify({ sessionId: session.id })
+    body: JSON.stringify({
+      sessionId: session.id,
+      publishableKey: process.env.STRIPE_PUBLISHABLE_KEY,
+    })
   }
 }

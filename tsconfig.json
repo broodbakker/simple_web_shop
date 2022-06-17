@@ -32,7 +32,8 @@
     "pages/index.tsx",
     "pages/index.tsx",
     "component/richText.js",
-    "pages/admin.tsxx"
+    "pages/admin.tsxx",
+    "netlify/functions/util/api.js"
   ],
   "exclude": [
     "node_modules"
