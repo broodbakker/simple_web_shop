@@ -10,7 +10,8 @@
         "https://res.cloudinary.com/dta9vptzh/image/upload/v1546510363/sample.jpg"
       ],
       "description": "fsd",
-      "category": "stallen"
+      "category": "stallen",
+      "curreny": "EUR"
     },
     {
       "price": 299,
@@ -22,18 +23,32 @@
         "https://res.cloudinary.com/dta9vptzh/image/upload/v1546510363/sample.jpg"
       ],
       "description": "df",
-      "category": "paarden"
+      "category": "paarden",
+      "curreny": "EUR"
     },
     {
-      "date": "2022-06-17T15:23:55.666Z",
-      "name": "this is a big boot",
-      "id": "this-is-a-big-boot",
-      "description": "is use this big boot to go away",
       "price": 1000,
+      "name": "this is a big boot",
+      "date": "2022-06-17T15:23:55.666Z",
       "currency": "EUR",
-      "category": "stallen",
+      "id": "this-is-a-big-boot",
       "image": [
         "https://res.cloudinary.com/dta9vptzh/image/upload/v1553072532/blog/bvkare1jkyfkjxy64ywj.jpg"
+      ],
+      "description": "is use this big boot to go away",
+      "category": "stallen",
+      "curreny": "EUR"
+    },
+    {
+      "date": "2022-06-20T06:50:06.594Z",
+      "name": "this is product number 4",
+      "id": "this-is-product-number-4",
+      "description": "beauty",
+      "price": 400,
+      "curreny": "EUR",
+      "category": "stallen",
+      "image": [
+        "https://res.cloudinary.com/dta9vptzh/image/upload/v1546870711/pizza_company2/qpwqrff84vs3onsirhj7.jpg"
       ]
     }
   ],
