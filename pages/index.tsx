@@ -1,20 +1,10 @@
 import React from 'react'
-//typescript
-import { IProduct, IProductCart } from "../typescript"
 //data
 import inventory from "../public/content/content.json"
 //template
 import HomePage from "../components/template/homePage"
-
-//function
-const ConvertProductDataForCart = ({ name, id, price, image, currency, description }: IProduct): IProductCart => ({
-  name,
-  id,
-  price,
-  description,
-  currency,
-  image: image[0],
-})
+//functions
+import { ConvertProductDataForCart } from "../util/function"
 
 const Home = () => {
   const i = inventory.products
@@ -26,7 +16,5 @@ const Home = () => {
     </div>
   )
 }
-
-
 
 export default Home

@@ -1,11 +1,11 @@
+import { default as NextLink } from 'next/link'
+//components
 import { CartModal } from "./cartModal"
 //hooks
 import { useAuth } from "../util/hooks/useAuth"
-
-import { default as NextLink } from 'next/link'
-
+//typescript
 import { IAuthContext } from "../typescript"
-
+//style
 import {
   Box,
   Flex,
@@ -14,14 +14,7 @@ import {
   Button,
   useDisclosure,
   useColorModeValue,
-  Stack,
-} from '@chakra-ui/react';
-
-import {
-  Text,
-} from '@chakra-ui/react';
-
-import {
+  Stack, Text,
   Collapse,
   Icon,
   Popover,

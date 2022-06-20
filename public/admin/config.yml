@@ -32,7 +32,7 @@ collections:
               - {label: "Price", name: "price", widget: "number"}
               - {label: "Publish Date", name: "date", widget: "datetime"}
               - label: "Currency"
-                name: "curreny"
+                name: "currency"
                 widget: "select"
                 options: ["EUR","USD"]
               - label: "Category"

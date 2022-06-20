@@ -1,13 +1,7 @@
 import { createContext, useState, useEffect } from "react";
 import netlifyIdentity from "netlify-identity-widget"
+import { IAuthContext } from "../typescript"
 
-interface IAuthContext {
-  user: null | netlifyIdentity.User,
-  login: () => void,
-  logout: () => void,
-  authReady: boolean
-
-}
 export const AuthContext = createContext<IAuthContext>({
   user: null,
   login: () => { },
@@ -22,6 +16,7 @@ interface IContext {
 export const AuthContextProvider = ({ children }: IContext) => {
   const [user, setUser] = useState<null | netlifyIdentity.User>(null)
   const [authReady, setAuthReady] = useState(true)
+
   useEffect(() => {
     netlifyIdentity.on("login", (user) => {
       setUser(user)

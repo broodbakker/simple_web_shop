@@ -8,12 +8,12 @@ import { usePayment } from "../util/hooks/usePayment"
 
 import {
   useDisclosure, Button
-  , Modal, ModalOverlay, ModalContent, ModalHeader, ModalBody, ModalCloseButton, ModalFooter
+  , Modal, ModalOverlay, ModalContent, ModalBody, ModalCloseButton, ModalFooter
 } from '@chakra-ui/react';
 
 
 export const CartModal = () => {
-  const { clearCart, addItem, loadCart, status, handleCheckout, cartDetails, cartCount } = usePayment()
+  const { cartCount } = usePayment()
 
   const { isOpen, onOpen, onClose } = useDisclosure()
   const [size, setSize] = useState('md')
@@ -38,7 +38,6 @@ export const CartModal = () => {
           <ModalBody>
 
             <Cart />
-
 
           </ModalBody>
           <ModalFooter>

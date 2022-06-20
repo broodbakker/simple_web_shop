@@ -2,8 +2,6 @@ import {
   Box,
   Flex,
   Heading,
-  HStack,
-  Link,
   Stack,
   useColorModeValue as mode,
 } from '@chakra-ui/react'
@@ -16,18 +14,17 @@ import { usePayment } from "../../util/hooks/usePayment"
 
 
 export const Cart = () => {
-  const { clearCart, addItem, loadCart, status, handleCheckout, cartDetails, cartCount, cart } = usePayment()
+  const { handleCheckout, cart } = usePayment()
 
   return (<CartView cart={cart} handleCheckout={handleCheckout} />)
 }
 
-
 interface ICartView {
   cart: any
-  handleCheckout:() => void
+  handleCheckout: () => void
 }
 
-const CartView = ({ cart,handleCheckout }: ICartView) => (
+const CartView = ({ cart, handleCheckout }: ICartView) => (
   <Box
     maxW={{ base: '3xl', lg: '7xl' }}
     mx="auto"
@@ -35,8 +32,7 @@ const CartView = ({ cart,handleCheckout }: ICartView) => (
     py={{ base: '6', md: '8', lg: '12' }}
   >
     <Stack
-      direction={{ base: 'column', lg: 'row' }}
-      align={{ lg: 'flex-start' }}
+      direction={{ base: 'column', }}
       spacing={{ base: '8', md: '16' }}
     >
       <Stack spacing={{ base: '8', md: '10' }} flex="2">

@@ -45,7 +45,7 @@
       "id": "this-is-product-number-4",
       "description": "beauty",
       "price": 400,
-      "curreny": "EUR",
+      "currency": "EUR",
       "category": "stallen",
       "image": [
         "https://res.cloudinary.com/dta9vptzh/image/upload/v1546870711/pizza_company2/qpwqrff84vs3onsirhj7.jpg"

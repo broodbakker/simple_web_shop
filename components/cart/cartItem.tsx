@@ -1,6 +1,5 @@
 import { CloseButton, Flex, Link, Select, SelectProps, useColorModeValue } from '@chakra-ui/react'
 import * as React from 'react'
-import { PriceTag } from './priceTag'
 import { CartProductMeta } from './cartProductMeta'
 
 type CartItemProps = {
@@ -47,11 +46,8 @@ export const CartItem = (props: CartItemProps) => {
     description,
     quantity,
     image,
-    currency,
-    price, id,
+    id,
     formattedValue,
-    onChangeQuantity,
-    onClickDelete,
     setItemQuantity,
     removeItem
   } = props
@@ -65,8 +61,6 @@ export const CartItem = (props: CartItemProps) => {
         image={image}
         isGiftWrapping={isGiftWrapping}
       />
-
-      {/* Desktop */}
       <Flex width="full" justify="space-between" display={{ base: 'none', md: 'flex' }}>
         <QuantitySelect
           value={quantity}

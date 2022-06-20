@@ -1,10 +1,8 @@
-import React, { ChangeEvent, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
+//typescript
+import { IProductCart } from "../typescript"
 import {
-  Grid,
-  Center,
-  Select,
   Text,
-  Button,
   Stack,
   ChakraProvider
 } from "@chakra-ui/react";
@@ -21,31 +19,11 @@ import {
 
 import { Products } from "./products"
 
-const fetchPokemons = async (
-  pageSize: number,
-  offset: number
-): Promise<any> => {
-  return await fetch(
-    `https://pokeapi.co/api/v2/pokemon?limit=${pageSize}&offset=${offset}`
-  ).then(async (res) => await res.json());
-};
-
-//typescript
-import { IProductCart } from "../typescript"
-
-
 interface IPagination {
   products: IProductCart[]
 }
 
-
 export const Pagination = ({ products }: IPagination) => {
-
-  // states
-  const [pokemonsTotal, setPokemonsTotal] = useState<number | undefined>(
-    products.length
-  );
-  const [pokemons, setPokemons] = useState<any[]>(products);
 
   // constants
   const outerLimit = 2;
@@ -62,7 +40,7 @@ export const Pagination = ({ products }: IPagination) => {
     pageSize,
     setPageSize
   } = usePagination({
-    total: pokemonsTotal,
+    total: products.length,
     limits: {
       outer: outerLimit,
       inner: innerLimit
@@ -74,16 +52,7 @@ export const Pagination = ({ products }: IPagination) => {
     }
   });
   // effects
-
   useEffect(() => {
-    // fetchPokemons(pageSize, offset)
-    //   .then((pokemons) => {
-    //     setPokemonsTotal(pokemons.count);
-    //     setPokemons(pokemons.results);
-    //   })
-    //   .catch((error) => console.log("App =>", error));
-
-
   }, [currentPage, pageSize, offset]);
 
   // handlers
@@ -92,8 +61,6 @@ export const Pagination = ({ products }: IPagination) => {
     setCurrentPage(nextPage);
     console.log("request new data with ->", nextPage);
   };
-
-
   return (
     <ChakraProvider>
       <Stack>
@@ -113,9 +80,9 @@ export const Pagination = ({ products }: IPagination) => {
             >
               <PaginationPrevious
                 _hover={{
-                  bg: "pink.400"
+                  bg: "pink.100"
                 }}
-                bg="pink.300"
+                bg="pink.200"
                 onClick={() =>
                   console.log(
                     "Im executing my own function along with Previous component functionality"
@@ -167,9 +134,9 @@ export const Pagination = ({ products }: IPagination) => {
               </PaginationPageGroup>
               <PaginationNext
                 _hover={{
-                  bg: "pink.400"
+                  bg: "pink.200"
                 }}
-                bg="pink.300"
+                bg="pink.100"
                 onClick={() =>
                   console.log(
                     "Im executing my own function along with Next component functionality"
@@ -181,8 +148,6 @@ export const Pagination = ({ products }: IPagination) => {
             </PaginationContainer>
           </>
         </Pag>
-
-
       </Stack>
     </ChakraProvider>
   );

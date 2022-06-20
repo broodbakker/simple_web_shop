@@ -1,8 +1,6 @@
 //components
 import { Pagination } from "../pagination"
-import { Products } from "../products"
 import { Navbar } from "../navbar"
-import { Cart } from "../cart"
 //typescript
 import { IProductCart } from "../../typescript"
 

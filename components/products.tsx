@@ -1,6 +1,6 @@
 import Product from "./product"
 //typescript
-import { IProduct, IProductCart } from "../typescript"
+import { IProductCart } from "../typescript"
 
 import {
   SimpleGrid
@@ -14,8 +14,7 @@ export const Products = ({ products }: IProducts) => {
   return (
     <>
       <SimpleGrid columns={[1, 2, 3]} spacing={10} mt="10">
-        {products.map((product,key) =>  <Product product={product} key={key}/> )}
-
+        {products.map((product, key) => <Product product={product} key={key} />)}
       </SimpleGrid>
     </>
   )
