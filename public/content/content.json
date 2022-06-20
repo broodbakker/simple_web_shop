@@ -10,8 +10,7 @@
         "https://res.cloudinary.com/dta9vptzh/image/upload/v1546510363/sample.jpg"
       ],
       "description": "fsd",
-      "category": "stallen",
-      "curreny": "EUR"
+      "category": "stallen"
     },
     {
       "price": 299,
@@ -23,8 +22,7 @@
         "https://res.cloudinary.com/dta9vptzh/image/upload/v1546510363/sample.jpg"
       ],
       "description": "df",
-      "category": "paarden",
-      "curreny": "EUR"
+      "category": "paarden"
     },
     {
       "date": "2022-06-17T15:23:55.666Z",
@@ -32,7 +30,7 @@
       "id": "this-is-a-big-boot",
       "description": "is use this big boot to go away",
       "price": 1000,
-      "curreny": "EUR",
+      "currency": "EUR",
       "category": "stallen",
       "image": [
         "https://res.cloudinary.com/dta9vptzh/image/upload/v1553072532/blog/bvkare1jkyfkjxy64ywj.jpg"
