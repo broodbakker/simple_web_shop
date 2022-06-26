@@ -7,12 +7,15 @@ import { useShoppingCart } from "use-shopping-cart"
 export const usePayment = () => {
   const cart = useShoppingCart()
 
+
   const {
     cartDetails,
     cartCount,
     clearCart,
     addItem, loadCart
   } = cart
+
+
   const [state, setState] = useState<{
     status: 'idle' | 'fetching' | 'redirecting'
     error: null | number | Error
@@ -42,7 +45,6 @@ export const usePayment = () => {
     });
 
   }
-
 
   return { clearCart, addItem, loadCart, status, handleCheckout, cartDetails, cartCount, cart }
 }

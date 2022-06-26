@@ -16,6 +16,7 @@ import { usePayment } from "../../util/hooks/usePayment"
 export const Cart = () => {
   const { handleCheckout, cart } = usePayment()
 
+
   return (<CartView cart={cart} handleCheckout={handleCheckout} />)
 }
 
@@ -37,8 +38,10 @@ const CartView = ({ cart, handleCheckout }: ICartView) => (
     >
       <Stack spacing={{ base: '8', md: '10' }} flex="2">
         <Heading fontSize="2xl" fontWeight="extrabold">
-          {cart.cartCount} products in cart
+         { `${cart.cartCount} product in je winkelmandje`}
         </Heading>
+
+
 
         <Stack spacing="6">
 

@@ -1,6 +1,7 @@
 import { default as NextLink } from 'next/link'
 //components
 import { CartModal } from "./cartModal"
+import { TextAnimation } from "./animation/textAnimation"
 //hooks
 import { useAuth } from "../util/hooks/useAuth"
 //typescript
@@ -21,14 +22,19 @@ import {
   PopoverTrigger,
   PopoverContent,
   useBreakpointValue,
+  Center, Image, Heading, HStack
 } from '@chakra-ui/react';
 
 import {
   HamburgerIcon,
   CloseIcon,
   ChevronDownIcon,
-  ChevronRightIcon,
+  ChevronRightIcon
 } from '@chakra-ui/icons';
+
+import { IoHome } from "react-icons/io5";
+
+import { ImGift } from "react-icons/im";
 
 
 export const Navbar = () => {
@@ -37,6 +43,8 @@ export const Navbar = () => {
   return (<NavbarView auth={auth} />)
 }
 
+
+const NEWSBAR_LINES = ["this is 1", "and 2", "3", "and last 4"];
 
 interface INavbarView {
   auth: IAuthContext
@@ -52,7 +60,12 @@ export const NavbarView = ({ auth }: INavbarView) => {
   const { isOpen, onToggle } = useDisclosure();
 
   return (
-    <Box>
+    <Box pos="fixed" w="full" zIndex="2">
+
+      <Center bg='purple.500' color='white'>
+        <TextAnimation lines={NEWSBAR_LINES}></TextAnimation>
+      </Center>
+
       <Flex
         bg={useColorModeValue('white', 'gray.800')}
         color={useColorModeValue('gray.600', 'white')}
@@ -62,7 +75,8 @@ export const NavbarView = ({ auth }: INavbarView) => {
         borderBottom={1}
         borderStyle={'solid'}
         borderColor={useColorModeValue('gray.200', 'gray.900')}
-        align={'center'}>
+        align={'center'}
+        pos="relative">
         <Flex
           flex={{ base: 1, md: 'auto' }}
           ml={{ base: -2 }}
@@ -77,16 +91,40 @@ export const NavbarView = ({ auth }: INavbarView) => {
           />
         </Flex>
         <Flex flex={{ base: 1 }} justify={{ base: 'center', md: 'start' }}>
-          <Text
-            textAlign={useBreakpointValue({ base: 'center', md: 'left' })}
-            fontFamily={'heading'}
-            color={useColorModeValue('gray.800', 'white')}>
-            Simple webshop
-          </Text>
 
-          {/* <Flex display={{ base: 'none', md: 'flex' }} ml={10}>
+          <NextLink href="/">
+            <a>
+
+              <Button
+                display={{ base: 'none', md: 'inline-flex' }}
+                fontSize={'sm'}
+                fontWeight={600}
+                colorScheme="purple"
+                variant='ghost'>
+                <HStack>
+                  {/* <Text
+                textAlign={useBreakpointValue({ base: 'center', md: 'left' })}
+                fontFamily={'heading'}
+                cursor="pointer"
+                color={useColorModeValue('gray.800', 'white')}>
+                Lauren schleich
+              </Text> */}
+
+                  <Image
+                    borderRadius='full'
+                    boxSize='40px'
+                    src='./images/logo_lauren.jpeg'
+                    alt='Dan Abramov'
+                  />
+                  <Heading as='h6' size='xs'>Laus Schleich </Heading>
+                </HStack>
+              </Button>
+            </a>
+          </NextLink>
+
+          <Flex display={{ base: 'none', md: 'flex' }} ml={10}>
             <DesktopNav />
-          </Flex> */}
+          </Flex>
         </Flex>
 
         <Stack
@@ -96,8 +134,7 @@ export const NavbarView = ({ auth }: INavbarView) => {
           spacing={6}>
 
           <CartModal />
-
-          {authReady &&
+          {/* {authReady &&
             <>
               {!user && <>
                 <Button
@@ -156,7 +193,7 @@ export const NavbarView = ({ auth }: INavbarView) => {
               }
 
             </>
-          }
+          } */}
 
 
         </Stack>
@@ -180,18 +217,36 @@ const DesktopNav = () => {
         <Box key={navItem.label}>
           <Popover trigger={'hover'} placement={'bottom-start'}>
             <PopoverTrigger>
-              <Link
-                p={2}
-                href={navItem.href ?? '#'}
-                fontSize={'sm'}
-                fontWeight={500}
-                color={linkColor}
-                _hover={{
-                  textDecoration: 'none',
-                  color: linkHoverColor,
-                }}>
-                {navItem.label}
-              </Link>
+
+              {navItem.href ?
+                <NextLink href={navItem.href}>
+                  <Button
+                    display={{ base: 'none', md: 'inline-flex' }}
+                    fontSize={'sm'}
+                    fontWeight={600}
+                    colorScheme="pink"
+                    leftIcon={<IoHome />}
+                    variant='ghost'>
+                    {navItem.label}
+                  </Button>
+
+                </NextLink> :
+                <Button
+                  as={'a'}
+                  fontSize={'sm'}
+                  fontWeight={400}
+                  variant='ghost'
+                  leftIcon={<ImGift />}
+                  cursor="pointer"
+
+                >
+                  {navItem.label}
+                </Button>
+
+
+
+              }
+
             </PopoverTrigger>
 
             {navItem.children && (
@@ -216,37 +271,38 @@ const DesktopNav = () => {
   );
 };
 
-const DesktopSubNav = ({ label, href, subLabel }: NavItem) => {
+const DesktopSubNav = ({ label, href, subLabel }: NavItem1) => {
   return (
-    <Link
-      href={href}
-      role={'group'}
-      display={'block'}
-      p={2}
-      rounded={'md'}
-      _hover={{ bg: useColorModeValue('pink.50', 'gray.900') }}>
-      <Stack direction={'row'} align={'center'}>
-        <Box>
-          <Text
+    <NextLink href={href}>
+      <Link
+        role={'group'}
+        display={'block'}
+        p={2}
+        rounded={'md'}
+        _hover={{ bg: useColorModeValue('pink.50', 'gray.900') }}>
+        <Stack direction={'row'} align={'center'}>
+          <Box>
+            <Text
+              transition={'all .3s ease'}
+              _groupHover={{ color: 'pink.400' }}
+              fontWeight={500}>
+              {label}
+            </Text>
+            <Text fontSize={'sm'}>{subLabel}</Text>
+          </Box>
+          <Flex
             transition={'all .3s ease'}
-            _groupHover={{ color: 'pink.400' }}
-            fontWeight={500}>
-            {label}
-          </Text>
-          <Text fontSize={'sm'}>{subLabel}</Text>
-        </Box>
-        <Flex
-          transition={'all .3s ease'}
-          transform={'translateX(-10px)'}
-          opacity={0}
-          _groupHover={{ opacity: '100%', transform: 'translateX(0)' }}
-          justify={'flex-end'}
-          align={'center'}
-          flex={1}>
-          <Icon color={'pink.400'} w={5} h={5} as={ChevronRightIcon} />
-        </Flex>
-      </Stack>
-    </Link>
+            transform={'translateX(-10px)'}
+            opacity={0}
+            _groupHover={{ opacity: '100%', transform: 'translateX(0)' }}
+            justify={'flex-end'}
+            align={'center'}
+            flex={1}>
+            <Icon color={'pink.400'} w={5} h={5} as={ChevronRightIcon} />
+          </Flex>
+        </Stack>
+      </Link>
+    </NextLink>
   );
 };
 
@@ -276,12 +332,26 @@ const MobileNavItem = ({ label, children, href }: NavItem) => {
         align={'center'}
         _hover={{
           textDecoration: 'none',
-        }}>
-        <Text
+        }}
+        borderBottom='1px' borderColor='gray.200'
+      >
+
+        <Button
+          fontSize={'sm'}
           fontWeight={600}
-          color={useColorModeValue('gray.600', 'gray.200')}>
-          {label}
-        </Text>
+          colorScheme="pink"
+          leftIcon={<IoHome />}
+          variant='ghost'>
+          <HStack>
+
+            <Text
+              fontWeight={600}
+              color={useColorModeValue('gray.600', 'gray.200')}>
+              {label}
+            </Text>
+          </HStack>
+        </Button>
+
         {children && (
           <Icon
             as={ChevronDownIcon}
@@ -316,48 +386,46 @@ const MobileNavItem = ({ label, children, href }: NavItem) => {
 interface NavItem {
   label: string;
   subLabel?: string;
-  children?: Array<NavItem>;
+  children?: Array<NavItem1>;
   href?: string;
+}
+
+interface NavItem1 {
+  label: string;
+  subLabel?: string;
+  href: string;
 }
 
 const NAV_ITEMS: Array<NavItem> = [
   {
-    label: 'Inspiration',
+    label: 'Thuis',
+    href: "/"
+  },
+  {
+    label: 'Mijn winkel',
     children: [
       {
-        label: 'Explore Design Work',
-        subLabel: 'Trending Design to inspire you',
-        href: '#',
+        label: 'Paarden',
+        subLabel: 'Alle paarden',
+        href: '/w/paarden',
       },
       {
-        label: 'New & Noteworthy',
-        subLabel: 'Up-and-coming Designers',
-        href: '#',
+        label: 'Dekjes',
+        subLabel: 'Alle dekjes',
+        href: '/w/dekjes',
       },
+      {
+        label: 'pony',
+        subLabel: 'Alle sprongen',
+        href: '/w/stallen',
+      },
+
     ],
   },
   {
-    label: 'Find Work',
-    children: [
-      {
-        label: 'Job Board',
-        subLabel: 'Find your dream design job',
-        href: '#',
-      },
-      {
-        label: 'Freelance Projects',
-        subLabel: 'An exclusive list for contract work',
-        href: '#',
-      },
-    ],
+    label: 'Over Mij',
+    href: "/over-mij"
   },
-  {
-    label: 'Learn Design',
-    href: '#',
-  },
-  {
-    label: 'Hire Designers',
-    href: '#',
-  },
+
 ];
 

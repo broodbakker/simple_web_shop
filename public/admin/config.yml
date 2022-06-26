@@ -19,7 +19,7 @@ collections:
     files:
       - label: "Products"
         name: "products"
-        file: "/public/content/content.json"
+        file: "/public/content/products.json"
         fields:
           - {label: Title, name: title, widget: string}
           - label: Products
@@ -27,7 +27,6 @@ collections:
             widget: list
             fields:
               - {name: name, label: Name, widget: "string"}
-              - {name: id, label: Id, widget: "string"}
               - {name: description, label: Description, widget:"string"}
               - {label: "Price", name: "price", widget: "number"}
               - {label: "Publish Date", name: "date", widget: "datetime"}
@@ -43,6 +42,12 @@ collections:
                 label: Image
                 widget: 'image'
                 valueField: "{{slug}}"
+              - label: ID
+                name: id
+                widget: ncw-id
+                prefix: post        # will generate post-124hfkjas
+                timestamp: true     # will generate 1245119112-post-124hfkjas
+
 
 
     # folder: "content/products"

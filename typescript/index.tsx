@@ -18,6 +18,7 @@ export interface IProductCart {
   image: string
   currency: string
   description: string
+  category: string
 }
 
 export interface IAuthContext {
