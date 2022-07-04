@@ -52,7 +52,6 @@ export const CartItem = (props: CartItemProps) => {
     removeItem
   } = props
 
-  console.log('quantity', quantity)
   return (
     <Flex direction={{ base: 'column', md: 'row' }} justify="space-between" align="center">
       <CartProductMeta

@@ -24,7 +24,6 @@ interface IPagination {
 }
 
 export const Pagination = ({ products }: IPagination) => {
-
   // constants
   const outerLimit = 2;
   const innerLimit = 2;
