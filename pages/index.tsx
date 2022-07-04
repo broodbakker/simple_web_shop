@@ -1,6 +1,6 @@
 import React from 'react'
 //data
-import inventory from "../public/content/content.json"
+import inventory from "../public/content/products.json"
 //template
 import HomePage from "../components/template/homePage"
 //functions

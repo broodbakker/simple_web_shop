@@ -79,9 +79,9 @@ export const Pagination = ({ products }: IPagination) => {
             >
               <PaginationPrevious
                 _hover={{
-                  bg: "pink.100"
+                  bg: "purple.100"
                 }}
-                bg="pink.200"
+                bg="purple.200"
                 onClick={() =>
                   console.log(
                     "Im executing my own function along with Previous component functionality"
@@ -121,10 +121,10 @@ export const Pagination = ({ products }: IPagination) => {
                     }
                     fontSize="sm"
                     _hover={{
-                      bg: "pink.300"
+                      bg: "purple.300"
                     }}
                     _current={{
-                      bg: "pink.300",
+                      bg: "purple.300",
                       fontSize: "sm",
                       w: 7
                     }}
@@ -133,9 +133,9 @@ export const Pagination = ({ products }: IPagination) => {
               </PaginationPageGroup>
               <PaginationNext
                 _hover={{
-                  bg: "pink.200"
+                  bg: "purple.200"
                 }}
-                bg="pink.100"
+                bg="purple.100"
                 onClick={() =>
                   console.log(
                     "Im executing my own function along with Next component functionality"
