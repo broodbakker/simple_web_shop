@@ -13,5 +13,13 @@
   <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
 
 </body>
+<script>
 
+import CMS from 'netlify-cms-app'
+// Initialize the CMS object
+CMS.init()
+// Now the registry is available via the CMS object.
+CMS.registerPreviewTemplate('my-template', MyTemplate)
+
+</script>
 </html>

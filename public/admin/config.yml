@@ -1,4 +1,3 @@
-
 backend:
   name: git-gateway
   branch: master
@@ -21,47 +20,44 @@ collections:
         name: "products"
         file: "/public/content/content.json"
         fields:
-          - {label: Title, name: title, widget: string}
+          - { label: Title, name: title, widget: string }
           - label: Products
             name: products
             widget: list
             fields:
-              - {name: name, label: Name, widget: "string"}
-              - {name: id, label: Id, widget: "string"}
-              - {name: description, label: Description, widget:"string"}
-              - {label: "Price", name: "price", widget: "number"}
-              - {label: "Publish Date", name: "date", widget: "datetime"}
+              - { name: name, label: Name, widget: "string" }
+              - { name: id, label: Id, widget: "string" }
+              - { name: description, label: Description, widget:"string" }
+              - { label: "Price", name: "price", widget: "number" }
+              - { label: "Publish Date", name: "date", widget: "datetime" }
               - label: "Currency"
                 name: "currency"
                 widget: "select"
-                options: ["EUR","USD"]
+                options: ["EUR", "USD"]
               - label: "Category"
                 name: "category"
                 widget: "select"
-                options: ["paarden","stallen","dekjes"]
+                options: ["paarden", "stallen", "dekjes"]
               - name: image
                 label: Image
-                widget: 'image'
+                widget: "image"
                 valueField: "{{slug}}"
-
 
     # folder: "content/products"
     # create: true
     # extension: json
     # format: json
     # fields:
-      # - {name: title, label: Title, widget: "string"}
-      # - {name: sku, label: Sku, widget: "string"}
-      # - {name: description, label: Description, widget:"string"}
-      # - {label: "Price", name: "price", widget: "string", pattern: ['(?<=^| )\d+(\.\d+)?(?=$| )', "must be a number"]}
-      # - {label: "Publish Date", name: "date", widget: "datetime"}
-      # - label: "Category"
-      #   name: "category"
-      #   widget: "select"
-      #   options: ["paarden","stallen","dekjes"]
-      # - name: image
-      #   label: Image
-      #   widget: 'image'
-      #   valueField: "{{slug}}"
-
-
+    # - {name: title, label: Title, widget: "string"}
+    # - {name: sku, label: Sku, widget: "string"}
+    # - {name: description, label: Description, widget:"string"}
+    # - {label: "Price", name: "price", widget: "string", pattern: ['(?<=^| )\d+(\.\d+)?(?=$| )', "must be a number"]}
+    # - {label: "Publish Date", name: "date", widget: "datetime"}
+    # - label: "Category"
+    #   name: "category"
+    #   widget: "select"
+    #   options: ["paarden","stallen","dekjes"]
+    # - name: image
+    #   label: Image
+    #   widget: 'image'
+    #   valueField: "{{slug}}"
